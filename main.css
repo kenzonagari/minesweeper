@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+button {
+    margin: 10px;
+}
+
+#statistics {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#container {
+    width: fit-content;
+    background-color: rgb(87, 86, 86);
+    padding: 10px;
+    border-radius: 0px;
+}
+
+.top-info {
+    color: rgb(255, 255, 255);
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    background-color: rgb(240, 240, 240);
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    border: 1.5px solid rgb(121, 121, 121);
+    border-radius: 0px;
+    cursor: pointer;
+    line-height: 30px;
+    text-align: center;
+    font-family: 'Press Start 2P', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.cell-mine {
+    /* background-color: rgb(235, 182, 182); */
+    color: rgb(100, 0, 0);
+}
+
+.closed {
+    font-size: 0px;
+}
+
+.opened {
+    transform: scale(0.95);
+    background: rgb(200,200,200);
+    border-color: rgb(163, 163, 163);
+    border-radius: 2px;
+}
+
+.cell-0 {
+    font-size: 0px;
+}
+
+.cell-1 {
+    color: blue;
+}
+
+.cell-2 {
+    color: green;
+}
+
+.cell-3 {
+    color: red;
+}
+
+.cell-4 {
+    color: rgb(247, 109, 132);
+}
+
+.cell-5 {
+    color: purple;
+}
+
+.cell-6 {
+    color: rgb(0, 165, 148);
+}
+
+.cell-7 {
+    color: black;
+}
+
+.cell-8 {
+    color: rgb(64, 64, 64);
+}
+
+.flagged {
+    font-size: 1em;
+    color: rgb(0, 0, 0);
+}
+
+.wrong-flag {
+    background-color: rgb(173, 255, 255);
+    color: brown;
+}
