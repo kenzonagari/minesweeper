@@ -1,10 +1,11 @@
 $(()=>{
 
 class Minesweeper {
-    constructor(width, height){
+    constructor(width, height, mineAmount){
         this.width = width;
         this.height = height;
         this.canvasArr = [];
+        this.mineAmount = mineAmount;
         this.mine = 'M';
         this.timer = 0;
         this.setTimer = 0;
@@ -34,8 +35,8 @@ class Minesweeper {
         }
     }
 
-    setMine(amount){
-        for(let i = 0 ; i < amount ; i++){
+    setMine(){
+        for(let i = 0 ; i < this.mineAmount ; i++){
             let randomX = Math.floor(Math.random() * this.height);
             let randomY = Math.floor(Math.random() * this.width);
             while(this.canvasArr[randomX][randomY] === this.mine){
@@ -50,15 +51,7 @@ class Minesweeper {
     }
 
     showMineAmount(){
-        let mineAmount = 0;
-        for(let i = 0 ; i < this.height ; i++){
-            for(let j = 0 ; j < this.width ; j++){
-                if(this.canvasArr[i][j] === this.mine){
-                    mineAmount++;
-                }
-            }
-        }
-        $('#mine-amount').text(mineAmount);
+        $('#mine-amount').text(this.mineAmount);
     }
 
     setTime(){
@@ -171,7 +164,7 @@ class Minesweeper {
     openBlank(cellId){
         this.openSquare($(cellId));
         if($(cellId).hasClass('cell-0')){
-            if($(cellId).hasClass('opened') !== true){
+            if($(cellId).hasClass('opened') === false){
                 $(cellId).addClass('opened');
                 this.revealBlanks(cellId);
             }
@@ -180,9 +173,12 @@ class Minesweeper {
     }
 
     flagSquare(cellId){
-        if($(cellId).hasClass('opened') !== true){
+        if($(cellId).hasClass('opened') === false){
             $(cellId).addClass('flagged');
             $(cellId).text('F');
+ 
+            this.mineAmount--;
+            $('#mine-amount').text(this.mineAmount);
         }
     }
 
@@ -191,6 +187,9 @@ class Minesweeper {
         cellNum.shift();
         let i = parseInt(cellNum[0]);
         let j = parseInt(cellNum[1]);
+
+        this.mineAmount++;
+        $('#mine-amount').text(this.mineAmount);
 
         $(cellId).removeClass('flagged');
         $(cellId).text(this.canvasArr[i][j]);
@@ -243,11 +242,12 @@ let game = new Minesweeper (0,0);
 const initBoard = (w, h, mine) => {
     game.width = w;
     game.height = h;
+    game.mineAmount = mine;
     game.firstMove = true;
     gameOverState = 0;
     game.createArray();
     game.drawBoard();
-    game.setMine(mine);
+    game.setMine();
     game.initSquareNumber();
     game.closeSquares();
     game.setTime()
