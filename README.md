@@ -4,7 +4,7 @@ Minesweeper clone built with JavaScript + jQuery + HTML + CSS, using Object Orie
 Try it out! https://minesweeper-clone.vercel.app/
 
 ## Motivation
-I chose a simple minesweeper build as an opportunity to explore OOP paradigm, in contrast to my previous projects that followed the imperative paradigm. The code is centered on one class template 'Minesweeper'. 
+I chose a simple minesweeper build as an opportunity to explore OOP paradigm. The code is centered on one class template 'Minesweeper'. 
 
 
 ## Code Overview
